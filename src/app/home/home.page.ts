@@ -2,11 +2,17 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular';
 import { Coches } from '../interfaces/coches';
 
+import { TaskItemComponent } from '../components/task-item/task-item.component';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent,
+    TaskItemComponent,
+    CommonModule
+  ],
 })
 export class HomePage {
 

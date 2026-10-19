@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Lista de coches
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,18 +9,18 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Lista de coches</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="ion-padding">
-    <app-task-item *ngFor="let coche of listaDeCoches"
-    [coches]="coche">
-    </app-task-item>
+    <app-car-item *ngFor="let coche of listaDeCoches"
+    [coche]="coche">
+    </app-car-item>
   </ion-content>
 
-  <div id="container">
+  <!-- <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </div> -->
 </ion-content>

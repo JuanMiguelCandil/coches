@@ -1,0 +1,14 @@
+<ion-card>
+  <ion-item>
+    <ion-label>
+      {{ coche.marca }} {{ coche.modelo }} - {{ coche.caballos }} cv
+      <br><small>
+        {{ coche.kilometros }} km
+      </small>
+    </ion-label>
+
+    <ion-button (click)="mostrarDetalles()" slot="end">
+      Ver
+    </ion-button>
+  </ion-item>
+</ion-card>

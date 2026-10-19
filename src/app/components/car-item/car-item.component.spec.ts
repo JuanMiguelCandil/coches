@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskItemComponent } from './task-item.component';
+import { CarItemComponent } from './car-item.component';
 
-describe('TaskItemComponent', () => {
-  let component: TaskItemComponent;
-  let fixture: ComponentFixture<TaskItemComponent>;
+describe('CarItemComponent', () => {
+  let component: CarItemComponent;
+  let fixture: ComponentFixture<CarItemComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskItemComponent);
+    fixture = TestBed.createComponent(CarItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

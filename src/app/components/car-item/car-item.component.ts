@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-car-item',
   templateUrl: './car-item.component.html',
   styleUrls: ['./car-item.component.scss'],
-  standalone: true,  
+  standalone: true,
   imports: [CommonModule, IonCard, IonItem, IonCheckbox, IonLabel, IonButton]
 })
 export class CarItemComponent  implements OnInit {

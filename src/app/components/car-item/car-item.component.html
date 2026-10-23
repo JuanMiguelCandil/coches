@@ -1,14 +1,12 @@
 <ion-card>
+  <img src="{{coche.imagen}}" width="100%" />
+  <ion-card-header>
+    <ion-card-title>{{coche.marca}} {{coche.modelo}}</ion-card-title>
+  </ion-card-header>
   <ion-item>
     <ion-label>
-      {{ coche.marca }} {{ coche.modelo }} - {{ coche.caballos }} cv
-      <br><small>
-        {{ coche.kilometros }} km
-      </small>
+      Caballos: {{ coche.caballos }} cv <br>
+      Kilometros: {{ coche.kilometros }} km
     </ion-label>
-
-    <ion-button (click)="mostrarDetalles()" slot="end">
-      Ver
-    </ion-button>
   </ion-item>
 </ion-card>

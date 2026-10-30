@@ -1,2 +1,33 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+:root {
+  --ion-color-primary: #05f;
+  --ion-color-primary-rgb: 100, 140, 6;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #00f;
+  --ion-color-primary-tint: #11d;
+  --ion-background-color: #eee;
+  --ion-text-color: #000;
+}
+
+.card-sombreada {
+  --background: #fff;
+  --color: #000;
+}
+
+@mixin dark-theme-variables {
+    --ion-color-primary: #ddd;
+    --ion-background-color: #333;
+    --ion-text-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        @include dark-theme-variables;
+    }
+}
+
+body.dark {
+    @include dark-theme-variables();
+}

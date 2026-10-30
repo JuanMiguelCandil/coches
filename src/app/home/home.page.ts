@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonRow, IonCol, IonGrid } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonRow, IonCol, IonGrid, IonButtons, IonIcon } from '@ionic/angular';
 import { Coches } from '../interfaces/coches';
 
 import { CarItemComponent } from '../components/car-item/car-item.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { settingsOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +15,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent,
     CarItemComponent,
-    CommonModule, IonRow, IonCol, IonGrid],
+    CommonModule, IonRow, IonCol, IonGrid,
+    RouterLink, IonButtons, IonIcon],
 })
 export class HomePage {
 
@@ -25,5 +29,7 @@ export class HomePage {
     {id: 6, marca: 'Honda', modelo: 'Civic', caballos: 155,kilometros: 138000, imagen: 'https://picsum.photos/400'}
   ];
 
-  constructor() {}
+  constructor() {
+    addIcons({settingsOutline});
+  }
 }

@@ -9,11 +9,21 @@
   --ion-color-primary-tint: #11d;
   --ion-background-color: #eee;
   --ion-text-color: #000;
+  --ion-font-family: 'Roboto Mono';
 }
 
 .card-sombreada {
   --background: #fff;
   --color: #000;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 @mixin dark-theme-variables {

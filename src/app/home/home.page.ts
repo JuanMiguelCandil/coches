@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonRow, IonCol, IonGrid, IonButtons, IonIcon } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonRow, IonCol, IonGrid, IonButtons, IonIcon, IonImg } from '@ionic/angular';
 import { Coches } from '../interfaces/coches';
 
 import { CarItemComponent } from '../components/car-item/car-item.component';
@@ -16,7 +16,7 @@ import { settingsOutline } from 'ionicons/icons';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent,
     CarItemComponent,
     CommonModule, IonRow, IonCol, IonGrid,
-    RouterLink, IonButtons, IonIcon],
+    RouterLink, IonButtons, IonIcon, IonImg ],
 })
 export class HomePage {
 

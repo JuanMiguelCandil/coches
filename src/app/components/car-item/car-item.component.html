@@ -1,6 +1,6 @@
 <ion-card class="card-sombreada">
-  <img src="{{coche.imagen}}" width="100%" />
   <ion-card-header>
+    <ion-img [src]="coche.imagen" [alt]="coche.marca + ' ' + coche.modelo"></ion-img>
     <ion-card-title>{{coche.marca}} {{coche.modelo}}</ion-card-title>
   </ion-card-header>
   <ion-item class="card-sombreada">

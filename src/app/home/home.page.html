@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-img src="assets/img/logo.jpg" class="logo" alt="Imagen del logo"></ion-img>
+      <ion-img src="assets/img/logo.jpg" class="logo"
+        alt="Imagen del logo"></ion-img>
     </ion-buttons>
     <ion-title>
       Lista de coches
@@ -22,6 +23,71 @@
   </ion-header>
 
   <ion-content class="ion-padding">
+    <!-- Contenido para añadir en: src/app/home/home.page.html (dentro de ion-content) -->
+
+    <!-- FORMULARIO PARA AÑADIR TAREAS -->
+
+    <ion-list>
+      <!-- Marca -->
+      <ion-item>
+        <ion-input
+          label="Marca"
+          label-placement="floating"
+          placeholder="Ej. Toyota"
+          [(ngModel)]="nuevoCoche.marca">
+        </ion-input>
+      </ion-item>
+
+      <!-- Modelo -->
+      <ion-item>
+        <ion-input
+          label="Modelo"
+          label-placement="floating"
+          placeholder="Ej. Corolla"
+          [(ngModel)]="nuevoCoche.modelo">
+        </ion-input>
+      </ion-item>
+
+      <!-- Caballos -->
+      <ion-item>
+        <ion-input
+          type="number"
+          label="Caballos"
+          label-placement="floating"
+          placeholder="Ej. 132"
+          [(ngModel)]="nuevoCoche.caballos">
+        </ion-input>
+      </ion-item>
+
+      <!-- Kilómetros -->
+      <ion-item>
+        <ion-input
+          type="number"
+          label="Kilómetros"
+          label-placement="floating"
+          placeholder="Ej. 52000"
+          [(ngModel)]="nuevoCoche.kilometros">
+        </ion-input>
+      </ion-item>
+
+      <!-- Imagén -->
+      <ion-item>
+        <ion-input
+          label="Imagén"
+          label-placement="floating"
+          placeholder="Ej. 'https://url.imagen.com'"
+          [(ngModel)]="nuevoCoche.imagen">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      (click)="agregarCoche()"
+      class="ion-margin-top ion-margin-bottom">
+      Añadir coche
+    </ion-button>
+
     <ion-grid>
       <ion-row>
         <ion-col *ngFor="let coche of listaDeCoches" size="12" size-md="6"

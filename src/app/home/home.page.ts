@@ -23,6 +23,8 @@ import { RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { settingsOutline } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
+import { ToastController, AlertController, ModalController } from '@ionic/angular';
+import { DetalleModalComponent } from '../components/detalle-modal/detalle-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -70,8 +72,73 @@ export class HomePage {
     imagen: '../../assets/img/coche.jpg'
   };
 
-  constructor() {
+  constructor(
+    private toastController: ToastController,
+    private alertController: AlertController,
+    private modalController: ModalController
+  ) {
     addIcons({ settingsOutline });
+  }
+
+  async mostrarToast() {
+    const toast = await this.toastController.create({
+      message: '¡Hola! Esto es una notificación Toast.',
+      duration: 2000,
+      position: 'bottom',
+      color: 'success',
+      buttons: ['OK']
+    });
+    await toast.present();
+  }
+
+  async mostrarAlertaSimple() {
+    const alert = await this.alertController.create({
+      header: 'Información',
+      subHeader: 'Mensaje importante',
+      message: 'Esto es una alerta que requiere atención.',
+      buttons: ['Entendido']
+    });
+    await alert.present();
+  }
+
+  async mostrarAlertaConfirmacion() {
+    const alert = await this.alertController.create({
+      header: '¿Estás seguro?',
+      message: 'Esta acción no se puede deshacer.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel', // Cierra la alerta sin más
+          handler: () => { console.log('Cancelado'); }
+        },
+        {
+          text: 'Eliminar',
+          role: 'confirm',
+          handler: () => { 
+            console.log('Confirmado: Elemento eliminado');
+            // Aquí llamaríamos a la lógica de borrado
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async abrirModal() {
+    const modal = await this.modalController.create({
+      component: DetalleModalComponent,
+      componentProps: {
+        mensaje: 'Este mensaje viene de la Home'
+      }
+    });
+
+    await modal.present();
+
+    const { data, role } = await modal.onDidDismiss();
+
+    if (role === 'confirm') {
+      console.log('Modal cerrado. Datos recibidos: ', data);
+    }
   }
 
   agregarCoche() {

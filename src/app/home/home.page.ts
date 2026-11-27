@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonRow,
-  IonCol,
-  IonGrid,
-  IonButtons,
-  IonIcon,
-  IonImg,
-  IonList,
-  IonItem,
-  IonInput,
-  IonButton
-} from '@ionic/angular';
-
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonRow, 
+  IonCol, 
+  IonGrid, 
+  IonButtons, 
+  IonIcon, 
+  IonList, 
+  IonItem, 
+  IonInput, 
+  IonButton, 
+  IonSkeletonText, 
+  IonCheckbox, 
+  IonLabel
+ } from '@ionic/angular';
 import { Coches } from '../interfaces/coches';
 import { CarItemComponent } from '../components/car-item/car-item.component';
 import { CommonModule } from '@angular/common';
@@ -44,24 +45,20 @@ import { DetalleModalComponent } from '../components/detalle-modal/detalle-modal
     RouterLink,
     IonButtons,
     IonIcon,
-    IonImg,
     IonList,
     IonItem,
     IonInput,
     IonButton,
-    FormsModule
-  ],
+    FormsModule,
+    IonCheckbox,
+    IonLabel,
+    IonSkeletonText
+],
 })
 export class HomePage {
 
-  listaDeCoches: Coches[] = [
-    { id: 1, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
-    { id: 2, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' },
-    { id: 3, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
-    { id: 4, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' },
-    { id: 5, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
-    { id: 6, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' }
-  ];
+  public listaDeCoches: Coches[] = [];
+  public cargando: boolean = true;
 
   nuevoCoche: Coches = {
     id: 0,
@@ -75,9 +72,22 @@ export class HomePage {
   constructor(
     private toastController: ToastController,
     private alertController: AlertController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private cdr: ChangeDetectorRef
   ) {
     addIcons({ settingsOutline });
+    setTimeout(() => {
+      this.listaDeCoches = [
+        { id: 1, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
+        { id: 2, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' },
+        { id: 3, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
+        { id: 4, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' },
+        { id: 5, marca: 'Toyota', modelo: 'Corolla', caballos: 132, kilometros: 52000, imagen: '../../assets/img/coche.jpg' },
+        { id: 6, marca: 'Honda', modelo: 'Civic', caballos: 155, kilometros: 138000, imagen: '../../assets/img/coche.jpg' }
+      ];
+      this.cargando = false;
+      this.cdr.detectChanges();
+    }, 2000);
   }
 
   async mostrarToast() {
@@ -114,7 +124,7 @@ export class HomePage {
         {
           text: 'Eliminar',
           role: 'confirm',
-          handler: () => { 
+          handler: () => {
             console.log('Confirmado: Elemento eliminado');
             // Aquí llamaríamos a la lógica de borrado
           }

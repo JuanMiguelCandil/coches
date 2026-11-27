@@ -1,12 +1,15 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-img src="assets/img/logo.jpg" class="logo"
-        alt="Imagen del logo"></ion-img>
+      <img src="assets/img/logo.jpg" class="logo"
+        alt="Imagen del logo" />
     </ion-buttons>
+
     <ion-title>
       Lista de coches
     </ion-title>
+
     <ion-buttons slot="end">
       <ion-button routerLink="/ajustes">
         <ion-icon slot="icon-only" name="build-outline"></ion-icon>
@@ -16,18 +19,36 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Lista de coches</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding">
-    <!-- Contenido para añadir en: src/app/home/home.page.html (dentro de ion-content) -->
+  <!-- SKELETON -->
+  <div *ngIf="cargando">
+    <ion-list>
+      <ion-item *ngFor="let i of [1, 2, 3]">
+        <ion-checkbox slot="start" disabled="true"></ion-checkbox>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text
+              [animated]="true"
+              style="width: 80%;">
+            </ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- CONTENIDO REAL -->
+  <div *ngIf="!cargando" class="ion-padding">
 
     <!-- FORMULARIO PARA AÑADIR TAREAS -->
-
     <ion-list>
+
       <!-- Marca -->
       <ion-item>
         <ion-input
@@ -70,15 +91,16 @@
         </ion-input>
       </ion-item>
 
-      <!-- Imagén -->
+      <!-- Imagen -->
       <ion-item>
         <ion-input
-          label="Imagén"
+          label="Imagen"
           label-placement="floating"
           placeholder="Ej. 'https://url.imagen.com'"
           [(ngModel)]="nuevoCoche.imagen">
         </ion-input>
       </ion-item>
+
     </ion-list>
 
     <ion-button
@@ -89,18 +111,47 @@
     </ion-button>
 
     <!-- Toasts -->
-    <ion-button expand="block" (click)="mostrarToast()">Toast</ion-button>
-    <ion-button expand="block" (click)="mostrarAlertaSimple()" color="secondary">Alerta Info</ion-button>
-    <ion-button expand="block" (click)="mostrarAlertaConfirmacion()" color="danger">Alerta Confirmar</ion-button>
-    <ion-button expand="block" (click)="abrirModal()" color="warning">Abrir Modal</ion-button>
+    <ion-button expand="block" (click)="mostrarToast()">
+      Toast
+    </ion-button>
 
+    <ion-button
+      expand="block"
+      (click)="mostrarAlertaSimple()"
+      color="secondary">
+      Alerta Info
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      (click)="mostrarAlertaConfirmacion()"
+      color="danger">
+      Alerta Confirmar
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      (click)="abrirModal()"
+      color="warning">
+      Abrir Modal
+    </ion-button>
+
+    <!-- LISTA DE COCHES -->
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let coche of listaDeCoches" size="12" size-md="6"
-          size-lg="4" size-xl="3">
+        <ion-col
+          *ngFor="let coche of listaDeCoches"
+          size="12"
+          size-md="6"
+          size-lg="4"
+          size-xl="3">
+
           <app-car-item [coche]="coche"></app-car-item>
+
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-content>
+
+  </div>
+
 </ion-content>

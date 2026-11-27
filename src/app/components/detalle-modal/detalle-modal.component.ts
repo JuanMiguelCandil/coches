@@ -6,14 +6,14 @@ import { ModalController, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton
   templateUrl: './detalle-modal.component.html',
   styleUrls: ['./detalle-modal.component.scss'],
   standalone: true,
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonButtons,
-    IonButton,
-    IonContent
-  ]
+  // imports: [
+  //   IonHeader,
+  //   IonToolbar,
+  //   IonTitle,
+  //   IonButtons,
+  //   IonButton,
+  //   IonContent
+  // ]
 })
 export class DetalleModalComponent  implements OnInit {
   @Input() mensaje: string = '';
